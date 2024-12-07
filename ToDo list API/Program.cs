@@ -19,7 +19,10 @@ List<ToDoDto> todos = new List<ToDoDto>()
 };
 
 //GET all todos
-        app.MapGet("/todos", () => todos);
+app.MapGet("/todos", () => todos);
 
+//GET a todo by id
+app.MapGet("/todos/{id}", (int id) =>
+    todos.Find(todo => todo.Id == id));
 
 app.Run();

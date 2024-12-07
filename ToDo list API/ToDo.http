@@ -1,5 +1,8 @@
 GET http://localhost:5240/todos
 
+### 
+GET http://localhost:5240/todos/1
+
 
 
 
