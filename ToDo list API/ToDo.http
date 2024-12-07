@@ -21,6 +21,9 @@ Content-Type: application/json
   "text": "Prepare for exam"
 }
 
+###
+DELETE http://localhost:5240/todos/2
+
 
 
 

@@ -56,4 +56,14 @@ app.MapPut("/todos/{id}", (int id, UpdateToDoDto updatedToDo) =>
     );
     return Results.NoContent();
 });
+
+//Delete an existing todo
+//DELETE /todo/id
+app.MapDelete("/todos/{id}", (int id) =>
+{
+    todos.RemoveAll(todo => todo.Id == id);
+
+    return Results.NoContent();
+});
+
 app.Run();
