@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var app = builder.Build();
 
+const string GetToDoEndpointName = "GetToDo";
 List<ToDoDto> todos = new List<ToDoDto>()
 {
     new ToDoDto(
@@ -23,6 +24,21 @@ app.MapGet("/todos", () => todos);
 
 //GET a todo by id
 app.MapGet("/todos/{id}", (int id) =>
-    todos.Find(todo => todo.Id == id));
+    todos.Find(todo => todo.Id == id))
+    .WithName(GetToDoEndpointName);
+
+// Create a new todo 
+// POST /todos
+app.MapPost("/todos", (CreateToDoDto newToDo) =>
+{
+    ToDoDto ToDo = new(
+        todos.Count + 1,
+        newToDo.Title,
+        newToDo.Text
+    );
+    todos.Add(ToDo);
+
+    return Results.CreatedAtRoute(GetToDoEndpointName, new { id = ToDo.Id }, ToDo);
+});
 
 app.Run();

@@ -3,6 +3,15 @@ GET http://localhost:5240/todos
 ### 
 GET http://localhost:5240/todos/1
 
+###
+POST http://localhost:5240/todos
+Content-Type: application/json
+
+{
+    "Title": "New Todo",
+    "Text": "A task to be done"
+}
+
 
 
 
