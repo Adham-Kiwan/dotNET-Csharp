@@ -54,6 +54,11 @@ app.MapPut("/todos/{id}", (int id, UpdateToDoDto updatedToDo) =>
 
     var index = todos.FindIndex(todo => todo.Id == id);
 
+    if (index == -1)
+    {
+        return Results.NotFound();
+    }
+    
     todos[index] = new ToDoDto(
         id,
         updatedToDo.Title,

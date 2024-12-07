@@ -1,7 +1,7 @@
 GET http://localhost:5240/todos
 
 ### 
-GET http://localhost:5240/todos/4
+GET http://localhost:5240/todos/2
 
 ###
 POST http://localhost:5240/todos
@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:5240/todos/4
+PUT http://localhost:5240/todos/2
 Content-Type: application/json
 
 {
