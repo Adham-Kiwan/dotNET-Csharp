@@ -12,7 +12,14 @@ Content-Type: application/json
     "Text": "A task to be done"
 }
 
+###
+PUT http://localhost:5240/todos/3
+Content-Type: application/json
 
+{
+  "title": "Task 3 updated",
+  "text": "Prepare for exam"
+}
 
 
 
