@@ -8,7 +8,6 @@ POST http://localhost:5240/todos
 Content-Type: application/json
 
 {
-    "title": "New Todo",
     "text": "A task to be done"
 }
 

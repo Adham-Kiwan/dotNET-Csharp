@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "Ab3230wyvuUWtXn1OljWqb4KDl0vKBCYwlo/8w6dwoCto5I1v8s4Rgz/q+fq/KItIyGpRYdQygNNI+FpmSFKcQ==",
+  "dgSpecHash": "mqwEkx0IHqvyz39t1r1G0QncEQlKbGot+AVhCf0yMzQTGpeCeTnZl1HJNiMIFPXeNXj8H0k39ZhiWah8wfA3Qg==",
   "success": true,
   "projectFilePath": "C:\\Users\\RT\\Desktop\\People365\\ToDo list API\\ToDo list API.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\RT\\.nuget\\packages\\bondx.minimalapi.extensions\\1.0.1\\bondx.minimalapi.extensions.1.0.1.nupkg.sha512",
+    "C:\\Users\\RT\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\RT\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\RT\\.nuget\\packages\\minimalapis.extensions\\0.11.0\\minimalapis.extensions.0.11.0.nupkg.sha512",
+    "C:\\Users\\RT\\.nuget\\packages\\minivalidation\\0.8.0\\minivalidation.0.8.0.nupkg.sha512"
+  ],
   "logs": []
 }

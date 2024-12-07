@@ -40,10 +40,13 @@ public static class ToDosEndpoints
         })
         .WithName(GetToDoEndpointName);
 
+
         // Create a new todo 
         // POST /todos
+        
         group.MapPost("/", (CreateToDoDto newToDo) =>
         {
+
             ToDoDto ToDo = new(
                 todos.Count + 1,
                 newToDo.Title,
@@ -52,7 +55,8 @@ public static class ToDosEndpoints
             todos.Add(ToDo);
 
             return Results.CreatedAtRoute(GetToDoEndpointName, new { id = ToDo.Id }, ToDo);
-        });
+        })
+        .WithParameterValidation();
 
 
         // Edit an existing todo

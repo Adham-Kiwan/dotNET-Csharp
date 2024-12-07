@@ -7,4 +7,9 @@
     <RootNamespace>ToDo_list_API</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Bondx.MinimalApi.Extensions" Version="1.0.1" />
+    <PackageReference Include="MinimalApis.Extensions" Version="0.11.0" />
+  </ItemGroup>
+
 </Project>
