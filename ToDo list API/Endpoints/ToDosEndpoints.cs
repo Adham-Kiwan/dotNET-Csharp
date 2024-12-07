@@ -23,7 +23,7 @@ public static class ToDosEndpoints
     public static RouteGroupBuilder MapTodosEnpoints(this WebApplication app)
     {
 
-        var group = app.MapGroup("/todos");
+        var group = app.MapGroup("/todos").WithParameterValidation();
 
 
         //GET all todos
@@ -55,8 +55,7 @@ public static class ToDosEndpoints
             todos.Add(ToDo);
 
             return Results.CreatedAtRoute(GetToDoEndpointName, new { id = ToDo.Id }, ToDo);
-        })
-        .WithParameterValidation();
+        });
 
 
         // Edit an existing todo
