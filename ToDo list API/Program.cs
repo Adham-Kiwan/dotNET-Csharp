@@ -24,7 +24,12 @@ app.MapGet("/todos", () => todos);
 
 //GET a todo by id
 app.MapGet("/todos/{id}", (int id) =>
-    todos.Find(todo => todo.Id == id))
+{
+    ToDoDto? todo = todos.Find(todo => todo.Id == id);
+
+    //make sure we return the same type if true or false
+    return todo is null ? Results.NotFound() : Results.Ok(todo);
+})
     .WithName(GetToDoEndpointName);
 
 // Create a new todo 
