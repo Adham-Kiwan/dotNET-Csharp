@@ -42,4 +42,18 @@ app.MapPost("/todos", (CreateToDoDto newToDo) =>
 });
 
 
+// Edit an existing todo
+// PUT /todos
+app.MapPut("/todos/{id}", (int id, UpdateToDoDto updatedToDo) =>
+{
+
+    var index = todos.FindIndex(todo => todo.Id == id);
+
+    todos[index] = new ToDoDto(
+        id,
+        updatedToDo.Title,
+        updatedToDo.Text
+    );
+    return Results.NoContent();
+});
 app.Run();
