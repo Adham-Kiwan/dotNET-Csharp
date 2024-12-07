@@ -1,0 +1,25 @@
+C:\Users\RT\Desktop\People365\ToDo list API\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\RT\Desktop\People365\ToDo list API\bin\Debug\net7.0\appsettings.json
+C:\Users\RT\Desktop\People365\ToDo list API\bin\Debug\net7.0\ToDo list API.exe
+C:\Users\RT\Desktop\People365\ToDo list API\bin\Debug\net7.0\ToDo list API.deps.json
+C:\Users\RT\Desktop\People365\ToDo list API\bin\Debug\net7.0\ToDo list API.runtimeconfig.json
+C:\Users\RT\Desktop\People365\ToDo list API\bin\Debug\net7.0\ToDo list API.dll
+C:\Users\RT\Desktop\People365\ToDo list API\bin\Debug\net7.0\ToDo list API.pdb
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\ToDo list API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\ToDo list API.AssemblyInfoInputs.cache
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\ToDo list API.AssemblyInfo.cs
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\ToDo list API.csproj.CoreCompileInputs.cache
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\ToDo list API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\staticwebassets\msbuild.ToDo list API.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\staticwebassets\msbuild.build.ToDo list API.props
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.ToDo list API.props
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.ToDo list API.props
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\scopedcss\bundle\ToDo list API.styles.css
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\ToDo list API.dll
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\refint\ToDo list API.dll
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\ToDo list API.pdb
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\ToDo list API.genruntimeconfig.cache
+C:\Users\RT\Desktop\People365\ToDo list API\obj\Debug\net7.0\ref\ToDo list API.dll
