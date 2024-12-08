@@ -1,0 +1,7 @@
+# Ignore sensitive configuration files
+appsettings.json
+appsettings.*.json
+.env
+
+# Ignore generated files
+*.generated.cs
