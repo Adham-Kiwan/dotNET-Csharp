@@ -22,15 +22,18 @@ public static class ToDosEndpoints
 
     public static RouteGroupBuilder MapTodosEnpoints(this WebApplication app)
     {
-
+        // upon validation, the appropriate endpoint filters will be applied
+        // and they will recognize the data notations in specified Dtos
         var group = app.MapGroup("/todos").WithParameterValidation();
 
 
         //GET all todos
+        
         group.MapGet("/", () => todos);
 
 
         //GET a todo by id
+
         group.MapGet("/{id}", (int id) =>
         {
             ToDoDto? todo = todos.Find(todo => todo.Id == id);
@@ -60,6 +63,7 @@ public static class ToDosEndpoints
 
         // Edit an existing todo
         // PUT /todos
+
         group.MapPut("/{id}", (int id, UpdateToDoDto updatedToDo) =>
         {
 
@@ -81,6 +85,7 @@ public static class ToDosEndpoints
 
         //Delete an existing todo
         //DELETE /todo/id
+
         group.MapDelete("/{id}", (int id) =>
         {
             todos.RemoveAll(todo => todo.Id == id);
