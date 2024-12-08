@@ -12,4 +12,6 @@ var app = builder.Build();
 
 app.MapTodosEnpoints();
 
+app.MigrateDb();
+
 app.Run();
