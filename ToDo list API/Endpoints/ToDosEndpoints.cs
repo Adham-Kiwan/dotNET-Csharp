@@ -1,5 +1,7 @@
 using System;
+using ToDo_list_API.Data;
 using ToDo_list_API.DTOs;
+using ToDo_list_API.Entities;
 
 namespace ToDo_list_API.Endpoints;
 
@@ -47,16 +49,25 @@ public static class ToDosEndpoints
         // Create a new todo 
         // POST /todos
         
-        group.MapPost("/", (CreateToDoDto newToDo) =>
+        group.MapPost("/", (CreateToDoDto newToDo, UsersContext DbContext ) =>
         {
 
-            ToDoDto ToDo = new(
-                todos.Count + 1,
-                newToDo.Title,
-                newToDo.Text
-            );
-            todos.Add(ToDo);
+            Todos ToDo = new()
+            {
+                Title = newToDo.Title,
+                Text = newToDo.Text,
+                UserId = 1 // assuming there is a user with id 1
+            };
+            DbContext.Todos.Add(ToDo);
+            DbContext.SaveChanges();
 
+            ToDoDto todoDto = new(
+                ToDo.Id,
+                ToDo.Title,
+                ToDo.Text
+            );
+
+            
             return Results.CreatedAtRoute(GetToDoEndpointName, new { id = ToDo.Id }, ToDo);
         });
 

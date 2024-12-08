@@ -8,8 +8,8 @@ using ToDo_list_API.Data;
 
 namespace ToDo_list_API.Data.Migrations
 {
-    [DbContext(typeof(TodosContext))]
-    partial class TodosContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(UsersContext))]
+    partial class UsersContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connString = builder.Configuration.GetConnectionString("ToDosStore");
 
 //register services
-builder.Services.AddSqlite<TodosContext>(connString);
+builder.Services.AddSqlite<UsersContext>(connString);
 
 var app = builder.Build();
 

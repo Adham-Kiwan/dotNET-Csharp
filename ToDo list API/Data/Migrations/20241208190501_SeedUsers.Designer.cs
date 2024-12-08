@@ -9,7 +9,7 @@ using ToDo_list_API.Data;
 
 namespace ToDo_list_API.Data.Migrations
 {
-    [DbContext(typeof(TodosContext))]
+    [DbContext(typeof(UsersContext))]
     [Migration("20241208190501_SeedUsers")]
     partial class SeedUsers
     {

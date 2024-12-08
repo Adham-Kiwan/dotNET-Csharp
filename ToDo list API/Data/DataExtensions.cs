@@ -9,7 +9,7 @@ public static class DataExtensions
     {
         // this allowes us to execute migrations on startup
         using var scope = app.Services.CreateScope();
-        var dbContext = scope.ServiceProvider.GetRequiredService<TodosContext>();
+        var dbContext = scope.ServiceProvider.GetRequiredService<UsersContext>();
         dbContext.Database.Migrate();
     }
 }
