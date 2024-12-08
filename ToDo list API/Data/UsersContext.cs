@@ -14,9 +14,9 @@ public class TodosContext(DbContextOptions<TodosContext> options)
     {
         //this code will be executed before migration
         modelBuilder.Entity<Users>().HasData(
-            new { Id = 1, Name = "Adham", Email = "adhamkiwan@outlook.com", PasswordHash = "password" },
-            new { Id = 2, Name = "John", Email = "john@outlook.com", PasswordHash = "password" },
-            new { Id = 3, Name = "Will", Email = "will@outlook.com", PasswordHash = "password" } 
+            new { Id = 1, Name = "Adham", Email = "adhamkiwan@outlook.com" },
+            new { Id = 2, Name = "John", Email = "john@outlook.com" },
+            new { Id = 3, Name = "Will", Email = "will@outlook.com" } 
         );
     }
 }

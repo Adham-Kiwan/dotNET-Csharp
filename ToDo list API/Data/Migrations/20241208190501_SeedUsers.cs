@@ -14,12 +14,12 @@ namespace ToDo_list_API.Data.Migrations
         {
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "Id", "Email", "Name", "PasswordHash" },
+                columns: new[] { "Id", "Email", "Name" },
                 values: new object[,]
                 {
-                    { 1, "adhamkiwan@outlook.com", "Adham", "password" },
-                    { 2, "john@outlook.com", "John", "password" },
-                    { 3, "will@outlook.com", "Will", "password" }
+                    { 1, "adhamkiwan@outlook.com", "Adham" },
+                    { 2, "john@outlook.com", "John" },
+                    { 3, "will@outlook.com", "Will" }
                 });
         }
 

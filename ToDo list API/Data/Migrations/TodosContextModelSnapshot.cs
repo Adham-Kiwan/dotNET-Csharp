@@ -54,10 +54,6 @@ namespace ToDo_list_API.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
                     b.ToTable("Users");
@@ -67,22 +63,19 @@ namespace ToDo_list_API.Data.Migrations
                         {
                             Id = 1,
                             Email = "adhamkiwan@outlook.com",
-                            Name = "Adham",
-                            PasswordHash = "password"
+                            Name = "Adham"
                         },
                         new
                         {
                             Id = 2,
                             Email = "john@outlook.com",
-                            Name = "John",
-                            PasswordHash = "password"
+                            Name = "John"
                         },
                         new
                         {
                             Id = 3,
                             Email = "will@outlook.com",
-                            Name = "Will",
-                            PasswordHash = "password"
+                            Name = "Will"
                         });
                 });
 

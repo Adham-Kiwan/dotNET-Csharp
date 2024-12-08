@@ -10,8 +10,8 @@ using ToDo_list_API.Data;
 namespace ToDo_list_API.Data.Migrations
 {
     [DbContext(typeof(TodosContext))]
-    [Migration("20241208160648_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20241208190501_SeedUsers")]
+    partial class SeedUsers
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -57,13 +57,29 @@ namespace ToDo_list_API.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Email = "adhamkiwan@outlook.com",
+                            Name = "Adham"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Email = "john@outlook.com",
+                            Name = "John"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "will@outlook.com",
+                            Name = "Will"
+                        });
                 });
 
             modelBuilder.Entity("ToDo_list_API.Entities.Todos", b =>
