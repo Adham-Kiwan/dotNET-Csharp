@@ -20,18 +20,19 @@ public static class ToDosEndpoints
 
         //GET all todos
         
-        group.MapGet("/", (UsersContext DbContext) => 
-        DbContext.Todos
+        group.MapGet("/", async (UsersContext DbContext) => 
+        await DbContext.Todos
             .Select(todo => todo.ToToDoSummaryDto())
-            .AsNoTracking());  //improve optimization
+            .AsNoTracking() //improve optimization
+            .ToListAsync()); 
 
 
         //GET a todo by id
 
-        group.MapGet("/{id}", (int id, UsersContext DbContext) =>
+        group.MapGet("/{id}",  async (int id, UsersContext DbContext) =>
         {
 
-            Todos? todo = DbContext.Todos.Find(id);
+            Todos? todo = await DbContext.Todos.FindAsync(id);
 
             //make sure we return the same type if true or false
             return todo is null ? Results.NotFound() : Results.Ok(todo);
@@ -42,13 +43,13 @@ public static class ToDosEndpoints
         // Create a new todo 
         // POST /todos
         
-        group.MapPost("/", (CreateToDoDto newToDo, UsersContext DbContext ) =>
+        group.MapPost("/", async (CreateToDoDto newToDo, UsersContext DbContext ) =>
         {
 
             Todos todo = newToDo.ToEntity();
  
             DbContext.Todos.Add(todo);
-            DbContext.SaveChanges();
+            await DbContext.SaveChangesAsync();
 
             return Results.CreatedAtRoute(
                 GetToDoEndpointName, new { id = todo.Id }, todo.ToDto());
@@ -58,10 +59,10 @@ public static class ToDosEndpoints
         // Edit an existing todo
         // PUT /todos
 
-        group.MapPut("/{id}", (int id, UpdateToDoDto updatedToDo, UsersContext DbContext) =>
+        group.MapPut("/{id}", async (int id, UpdateToDoDto updatedToDo, UsersContext DbContext) =>
         {
 
-            var existingToDo = DbContext.Todos.Find(id);
+            var existingToDo = await DbContext.Todos.FindAsync(id);
 
             if (existingToDo is null)
             {
@@ -72,7 +73,7 @@ public static class ToDosEndpoints
             .CurrentValues
             .SetValues(updatedToDo.ToEntity(id));
 
-            DbContext.SaveChanges();
+            await DbContext.SaveChangesAsync();
             
             return Results.NoContent();
         });
@@ -81,11 +82,11 @@ public static class ToDosEndpoints
         //Delete an existing todo
         //DELETE /todo/id
 
-        group.MapDelete("/{id}", (int id, UsersContext DbContext) =>
+        group.MapDelete("/{id}", async (int id, UsersContext DbContext) =>
         {
-            DbContext.Todos
-            .Where(todo => todo.Id == id)
-            .ExecuteDelete();
+            await DbContext.Todos
+                .Where(todo => todo.Id == id)
+                .ExecuteDeleteAsync();
 
             return Results.NoContent();
         });

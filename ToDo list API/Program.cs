@@ -41,7 +41,7 @@ builder.Services.AddSqlite<UsersContext>(connString);
 var app = builder.Build();
 
 // Migrate database at startup
-app.MigrateDb();
+await app.MigrateDbAsync();
 // app.UseMiddleware<AuthMiddleware>();  // Add this line
 
 // Map API endpoints
