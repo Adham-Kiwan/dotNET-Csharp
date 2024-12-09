@@ -31,9 +31,11 @@ public static class UserEndpoints
             var userDto = new { user.Id, user.Name, user.Email, Token = token };
             return Results.Ok(userDto);
         })
+        .AllowAnonymous() // Ensure this endpoint is not protected by authentication
         .WithTags("User")
         .WithDescription("Logs in a user using their email.");
 
         return group;
     }
 }
+

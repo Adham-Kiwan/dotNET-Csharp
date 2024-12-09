@@ -1,27 +1,16 @@
 using System;
+using Microsoft.EntityFrameworkCore;
 using ToDo_list_API.Data;
 using ToDo_list_API.DTOs;
 using ToDo_list_API.Entities;
+using ToDo_list_API.Mapping;
 
 namespace ToDo_list_API.Endpoints;
 
 public static class ToDosEndpoints
 {
     const string GetToDoEndpointName = "GetTodo";
-    private static readonly List<ToDoDto> todos = new List<ToDoDto>()
-{
-    new ToDoDto(
-        1,
-        "Task 1",
-        "Do homework"
-        ),
-    new ToDoDto(
-        2,
-        "Task 2",
-        "Download playlist"
-        )
-};
-
+    
     public static RouteGroupBuilder MapTodosEndpoints(this WebApplication app)
     {
         // upon validation, the appropriate endpoint filters will be applied
@@ -31,14 +20,18 @@ public static class ToDosEndpoints
 
         //GET all todos
         
-        group.MapGet("/", () => todos);
+        group.MapGet("/", (UsersContext DbContext) => 
+        DbContext.Todos
+            .Select(todo => todo.ToToDoSummaryDto())
+            .AsNoTracking());  //improve optimization
 
 
         //GET a todo by id
 
-        group.MapGet("/{id}", (int id) =>
+        group.MapGet("/{id}", (int id, UsersContext DbContext) =>
         {
-            ToDoDto? todo = todos.Find(todo => todo.Id == id);
+
+            Todos? todo = DbContext.Todos.Find(id);
 
             //make sure we return the same type if true or false
             return todo is null ? Results.NotFound() : Results.Ok(todo);
@@ -52,44 +45,35 @@ public static class ToDosEndpoints
         group.MapPost("/", (CreateToDoDto newToDo, UsersContext DbContext ) =>
         {
 
-            Todos ToDo = new()
-            {
-                Title = newToDo.Title,
-                Text = newToDo.Text,
-                UserId = 1 // assuming there is a user with id 1
-            };
-            DbContext.Todos.Add(ToDo);
+            Todos todo = newToDo.ToEntity();
+ 
+            DbContext.Todos.Add(todo);
             DbContext.SaveChanges();
 
-            ToDoDto todoDto = new(
-                ToDo.Id,
-                ToDo.Title,
-                ToDo.Text
-            );
-
-            
-            return Results.CreatedAtRoute(GetToDoEndpointName, new { id = ToDo.Id }, ToDo);
+            return Results.CreatedAtRoute(
+                GetToDoEndpointName, new { id = todo.Id }, todo.ToDto());
         });
 
 
         // Edit an existing todo
         // PUT /todos
 
-        group.MapPut("/{id}", (int id, UpdateToDoDto updatedToDo) =>
+        group.MapPut("/{id}", (int id, UpdateToDoDto updatedToDo, UsersContext DbContext) =>
         {
 
-            var index = todos.FindIndex(todo => todo.Id == id);
+            var existingToDo = DbContext.Todos.Find(id);
 
-            if (index == -1)
+            if (existingToDo is null)
             {
                 return Results.NotFound();
             }
 
-            todos[index] = new ToDoDto(
-                id,
-                updatedToDo.Title,
-                updatedToDo.Text
-            );
+            DbContext.Entry(existingToDo)
+            .CurrentValues
+            .SetValues(updatedToDo.ToEntity(id));
+
+            DbContext.SaveChanges();
+            
             return Results.NoContent();
         });
 
@@ -97,9 +81,11 @@ public static class ToDosEndpoints
         //Delete an existing todo
         //DELETE /todo/id
 
-        group.MapDelete("/{id}", (int id) =>
+        group.MapDelete("/{id}", (int id, UsersContext DbContext) =>
         {
-            todos.RemoveAll(todo => todo.Id == id);
+            DbContext.Todos
+            .Where(todo => todo.Id == id)
+            .ExecuteDelete();
 
             return Results.NoContent();
         });
@@ -107,4 +93,3 @@ public static class ToDosEndpoints
         return group;
     }
 }
-

@@ -1,19 +1,19 @@
 GET http://localhost:5240/todos
 
 ### 
-GET http://localhost:5240/todos/2
+GET http://localhost:5240/todos/4
 
 ###
 POST http://localhost:5240/todos
 Content-Type: application/json
 
 {
-    "title": "New Todo",
-    "text": "A task to be done"
+    "title": "User 3 Todo",
+    "text": "Do homework"
 }
 
 ###
-PUT http://localhost:5240/todos/3
+PUT http://localhost:5240/todos/4
 Content-Type: application/json
 
 {
@@ -22,7 +22,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:5240/todos/2
+DELETE http://localhost:5240/todos/3
 
 
 
