@@ -10,7 +10,8 @@ builder.Services.AddSqlite<UsersContext>(connString);
 
 var app = builder.Build();
 
-app.MapTodosEnpoints();
+app.MapTodosEndpoints();
+app.MapUserEndpoints();
 
 app.MigrateDb();
 

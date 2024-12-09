@@ -22,7 +22,7 @@ public static class ToDosEndpoints
         )
 };
 
-    public static RouteGroupBuilder MapTodosEnpoints(this WebApplication app)
+    public static RouteGroupBuilder MapTodosEndpoints(this WebApplication app)
     {
         // upon validation, the appropriate endpoint filters will be applied
         // and they will recognize the data notations in specified Dtos
