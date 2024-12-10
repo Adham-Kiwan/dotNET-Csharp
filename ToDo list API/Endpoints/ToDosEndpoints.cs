@@ -15,7 +15,7 @@ public static class ToDosEndpoints
     {
         // upon validation, the appropriate endpoint filters will be applied
         // and they will recognize the data notations in specified Dtos
-        var group = app.MapGroup("/todos").WithParameterValidation();
+        var group = app.MapGroup("/todos/api/v1").WithParameterValidation();
 
 
         //GET all todos
