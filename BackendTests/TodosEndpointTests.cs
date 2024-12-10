@@ -36,7 +36,7 @@ public class TodosEndpointTests : IClassFixture<WebApplicationFactory<Program>>
         var client = _factory.CreateClient();
         client.DefaultRequestHeaders.Authorization = null;
 
-        var response = await client.GetAsync("/todos/");
+        var response = await client.GetAsync("/todos/api/v1");
         Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
     }
 
@@ -68,7 +68,7 @@ public async Task GetTodos_AuthenticatedUser_ReturnsTodos()
 
     client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMiLCJlbWFpbCI6IndpbGxAb3V0bG9vay5jb20iLCJqdGkiOiI1NGRhMjBjMC02NzRlLTQ2ZTgtYmIxNS03NDI1YWZmZDE4YWUiLCJleHAiOjE3Mzc0MzY4MzYsImlzcyI6InlvdXItYXBwIiwiYXVkIjoieW91ci1hcHAifQ.aDSPi7dJcPmlJU5d84z0wJ81oXXaaiYFesCFj33MTHk");
 
-    var response = await client.GetAsync("/todos/");
+    var response = await client.GetAsync("/todos/api/v1");
     var responseData = await response.Content.ReadAsStringAsync();
 
     Assert.Equal(HttpStatusCode.OK, response.StatusCode);
