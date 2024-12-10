@@ -74,6 +74,7 @@ You need to create a `appsettings.json` file in the root directory. Below is a t
   }
 }
 ```
+Don't forget to update the new token you got after logging in in the testing file and in necessary places.
 
 ## Usage
 
