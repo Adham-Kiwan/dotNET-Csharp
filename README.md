@@ -10,7 +10,7 @@ This project is a backend API for a simple To-Do List application, implementing 
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
-- [Contributing](#contributing)
+- [Contributing](#contributing section)
 
 ## Installation
 
