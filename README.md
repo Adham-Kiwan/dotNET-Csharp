@@ -10,7 +10,7 @@ This project is a backend API for a simple To-Do List application, implementing 
 - [Installation](#installation)
 - [Configuration](#configuration)
 - [Usage](#usage)
-- [Contributing](#contributing section)
+- [Contributing](#contributing)
 
 ## Installation
 
@@ -95,7 +95,7 @@ For endpoints that require authentication, include a valid JWT token in the Auth
 Replace `<your-token>` with a valid JWT token that you can obtain by logging in through the authentication endpoint.
 
 
-### Contributing Section
+## Contributing Section
 
 ```markdown
 ## Contributing
