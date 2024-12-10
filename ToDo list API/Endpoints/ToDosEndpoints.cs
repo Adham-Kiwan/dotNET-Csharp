@@ -10,7 +10,7 @@ namespace ToDo_list_API.Endpoints;
 public static class ToDosEndpoints
 {
     const string GetToDoEndpointName = "GetTodo";
-    
+
     public static RouteGroupBuilder MapTodosEndpoints(this WebApplication app)
     {
         // upon validation, the appropriate endpoint filters will be applied
@@ -19,18 +19,30 @@ public static class ToDosEndpoints
 
 
         //GET all todos
-        
-        group.MapGet("/", async (UsersContext DbContext) => 
-        await DbContext.Todos
-            .Select(todo => todo.ToToDoSummaryDto())
-            .AsNoTracking() //improve optimization
-            .ToListAsync()); 
+
+        group.MapGet("/", async (UsersContext DbContext, HttpContext context) =>
+        {
+            if (!context.User.Identity?.IsAuthenticated ?? true)
+            {
+                return Results.Unauthorized();
+            }
+
+            return Results.Ok(await DbContext.Todos
+                .Select(todo => todo.ToToDoSummaryDto())
+                .AsNoTracking() // Improve optimization
+                .ToListAsync());
+        });
+
 
 
         //GET a todo by id
 
-        group.MapGet("/{id}",  async (int id, UsersContext DbContext) =>
+        group.MapGet("/{id}", async (int id, UsersContext DbContext, HttpContext context) =>
         {
+            if (!context.User.Identity?.IsAuthenticated ?? true)
+            {
+                return Results.Unauthorized();
+            }
 
             Todos? todo = await DbContext.Todos.FindAsync(id);
 
@@ -42,12 +54,12 @@ public static class ToDosEndpoints
 
         // Create a new todo 
         // POST /todos
-        
-        group.MapPost("/", async (CreateToDoDto newToDo, UsersContext DbContext ) =>
+
+        group.MapPost("/", async (CreateToDoDto newToDo, UsersContext DbContext) =>
         {
 
             Todos todo = newToDo.ToEntity();
- 
+
             DbContext.Todos.Add(todo);
             await DbContext.SaveChangesAsync();
 
@@ -74,7 +86,7 @@ public static class ToDosEndpoints
             .SetValues(updatedToDo.ToEntity(id));
 
             await DbContext.SaveChangesAsync();
-            
+
             return Results.NoContent();
         });
 

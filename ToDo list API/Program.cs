@@ -9,8 +9,8 @@ using ToDo_list_API.Middlewares;
 var builder = WebApplication.CreateBuilder(args);
 
 // Retrieve the JWT settings from appsettings.json
-// var jwtSettings = builder.Configuration.GetSection("JwtSettings");
-// var secretKey = jwtSettings["SecretKey"];  // Get the secret key
+var jwtSettings = builder.Configuration.GetSection("JwtSettings");
+var secretKey = jwtSettings["SecretKey"];  // Get the secret key
 
 
 
@@ -21,22 +21,22 @@ var connString = builder.Configuration.GetConnectionString("ToDosStore");
 builder.Services.AddSqlite<UsersContext>(connString);
 
 // Add Authentication and Authorization
-// builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-//     .AddJwtBearer(options =>
-//     {
-//         options.TokenValidationParameters = new TokenValidationParameters
-//         {
-//             ValidateIssuer = true,
-//             ValidateAudience = true,
-//             ValidateLifetime = true,
-//             ValidateIssuerSigningKey = true,
-//             ValidIssuer = jwtSettings["Issuer"],  // Use the issuer from config
-//             ValidAudience = jwtSettings["Audience"],  // Use the audience from config
-//             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
-//         };
-//     });
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = jwtSettings["Issuer"],  // Use the issuer from config
+            ValidAudience = jwtSettings["Audience"],  // Use the audience from config
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
+        };
+    });
 
-// builder.Services.AddAuthorization();
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -49,8 +49,8 @@ app.MapUserEndpoints(builder.Configuration);
 
 // Use Authentication and Authorization middleware
 // This ensures unauthenticated routes are defined before applying middleware
-// app.UseAuthentication();
-// app.UseAuthorization();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapTodosEndpoints();
 
