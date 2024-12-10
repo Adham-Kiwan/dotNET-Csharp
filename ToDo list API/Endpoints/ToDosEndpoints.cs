@@ -55,10 +55,31 @@ public static class ToDosEndpoints
         // Create a new todo 
         // POST /todos
 
-        group.MapPost("/", async (CreateToDoDto newToDo, UsersContext DbContext) =>
+        group.MapPost("/", async (CreateToDoDto newToDo, UsersContext DbContext, HttpContext context) =>
         {
+            // Ensure the user is authenticated
+            if (!context.User.Identity?.IsAuthenticated ?? true)
+            {
+                return Results.Unauthorized();
+            }
 
-            Todos todo = newToDo.ToEntity();
+            // Extract the user ID from the claims
+            var userIdClaim = context.User.FindFirst("id");
+
+            if (userIdClaim == null || string.IsNullOrEmpty(userIdClaim.Value))
+            {
+                return Results.BadRequest("User ID is missing from the token.");
+            }
+
+            // Try converting the user ID to an integer
+            if (!int.TryParse(userIdClaim.Value, out var userId))
+            {
+                return Results.BadRequest("Invalid User ID in token.");
+            }
+
+            // Create a new todo and assign the user ID
+            var todo = newToDo.ToEntity();
+            todo.UserId = userId;
 
             DbContext.Todos.Add(todo);
             await DbContext.SaveChangesAsync();
@@ -68,11 +89,25 @@ public static class ToDosEndpoints
         });
 
 
+
         // Edit an existing todo
         // PUT /todos
 
-        group.MapPut("/{id}", async (int id, UpdateToDoDto updatedToDo, UsersContext DbContext) =>
+        group.MapPut("/{id}", async (int id, UpdateToDoDto updatedToDo, UsersContext DbContext, HttpContext context) =>
         {
+            // Ensure the user is authenticated
+            if (!context.User.Identity?.IsAuthenticated ?? true)
+            {
+                return Results.Unauthorized();
+            }
+
+            // Extract the user ID from the claims
+            var userIdClaim = context.User.FindFirst("id");
+
+            if (userIdClaim == null || string.IsNullOrEmpty(userIdClaim.Value))
+            {
+                return Results.BadRequest("User ID is missing from the token.");
+            }
 
             var existingToDo = await DbContext.Todos.FindAsync(id);
 
@@ -94,14 +129,46 @@ public static class ToDosEndpoints
         //Delete an existing todo
         //DELETE /todo/id
 
-        group.MapDelete("/{id}", async (int id, UsersContext DbContext) =>
+        group.MapDelete("/{id}", async (int id, UsersContext DbContext, HttpContext context) =>
         {
-            await DbContext.Todos
-                .Where(todo => todo.Id == id)
-                .ExecuteDeleteAsync();
+            // Ensure the user is authenticated
+            if (!context.User.Identity?.IsAuthenticated ?? true)
+            {
+                return Results.Unauthorized();
+            }
+
+            // Extract the user ID from the claims
+            var userIdClaim = context.User.FindFirst("id"); // Use "id" as per your JWT changes
+            if (userIdClaim == null || string.IsNullOrEmpty(userIdClaim.Value))
+            {
+                return Results.BadRequest("User ID is missing from the token.");
+            }
+
+            if (!int.TryParse(userIdClaim.Value, out var userId))
+            {
+                return Results.BadRequest("Invalid User ID in token.");
+            }
+
+            // Retrieve the ToDo item
+            var existingToDo = await DbContext.Todos.FirstOrDefaultAsync(todo => todo.Id == id);
+            if (existingToDo == null)
+            {
+                return Results.NotFound();
+            }
+
+            // Check if the logged-in user owns this ToDo item
+            if (existingToDo.UserId != userId)
+            {
+                return Results.Forbid(); // User is not the owner of this ToDo
+            }
+
+            // Delete the ToDo item
+            DbContext.Todos.Remove(existingToDo);
+            await DbContext.SaveChangesAsync();
 
             return Results.NoContent();
         });
+
 
         return group;
     }

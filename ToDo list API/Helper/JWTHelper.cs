@@ -9,7 +9,7 @@ public static class JwtHelper
     {
         var claims = new[]
         {
-        new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
+        new Claim("id", userId.ToString()),
         new Claim(JwtRegisteredClaimNames.Email, email),
         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
     };
