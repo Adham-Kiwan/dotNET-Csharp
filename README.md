@@ -27,7 +27,7 @@ Before running this project, make sure you have the following installed:
 
 1. Clone the repository:
     ```bash
-    git clone git@github.com:Adham-Kiwan/dotNET-Csharp.git
+    git clone https://github.com/Adham-Kiwan/dotNET-Csharp.git
     cd dotNET-Csharp
     ```
 
