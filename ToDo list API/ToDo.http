@@ -1,14 +1,14 @@
 GET http://localhost:5240/todos
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMiLCJlbWFpbCI6IndpbGxAb3V0bG9vay5jb20iLCJqdGkiOiI1NGRhMjBjMC02NzRlLTQ2ZTgtYmIxNS03NDI1YWZmZDE4YWUiLCJleHAiOjE3Mzc0MzY4MzYsImlzcyI6InlvdXItYXBwIiwiYXVkIjoieW91ci1hcHAifQ.aDSPi7dJcPmlJU5d84z0wJ81oXXaaiYFesCFj33MTHk
+Authorization: Bearer <your_token>
 
 ### 
 GET http://localhost:5240/todos/2
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMiLCJlbWFpbCI6IndpbGxAb3V0bG9vay5jb20iLCJqdGkiOiI1NGRhMjBjMC02NzRlLTQ2ZTgtYmIxNS03NDI1YWZmZDE4YWUiLCJleHAiOjE3Mzc0MzY4MzYsImlzcyI6InlvdXItYXBwIiwiYXVkIjoieW91ci1hcHAifQ.aDSPi7dJcPmlJU5d84z0wJ81oXXaaiYFesCFj33MTHk
+Authorization: Bearer <your_token>
 
 ###
 POST http://localhost:5240/todos
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMiLCJlbWFpbCI6IndpbGxAb3V0bG9vay5jb20iLCJqdGkiOiI1NGRhMjBjMC02NzRlLTQ2ZTgtYmIxNS03NDI1YWZmZDE4YWUiLCJleHAiOjE3Mzc0MzY4MzYsImlzcyI6InlvdXItYXBwIiwiYXVkIjoieW91ci1hcHAifQ.aDSPi7dJcPmlJU5d84z0wJ81oXXaaiYFesCFj33MTHk
+Authorization: Bearer <your_token>
 
 {
     "title": "Task-3 Update playlist",
@@ -27,7 +27,7 @@ Authorization: Bearer <your_token>
 
 ###
 DELETE http://localhost:5240/todos/3
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMiLCJlbWFpbCI6IndpbGxAb3V0bG9vay5jb20iLCJqdGkiOiI1NGRhMjBjMC02NzRlLTQ2ZTgtYmIxNS03NDI1YWZmZDE4YWUiLCJleHAiOjE3Mzc0MzY4MzYsImlzcyI6InlvdXItYXBwIiwiYXVkIjoieW91ci1hcHAifQ.aDSPi7dJcPmlJU5d84z0wJ81oXXaaiYFesCFj33MTHk
+Authorization: Bearer <your_token>
 
 
 
@@ -39,7 +39,7 @@ POST http://localhost:5240/users/login
 Content-Type: application/json
 
 {
-  "Email": "adhamkiwan@outlook.com"
+  "Email": "will@outlook.com"
 }
 
 
