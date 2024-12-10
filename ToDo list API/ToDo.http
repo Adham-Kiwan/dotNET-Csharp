@@ -1,12 +1,12 @@
-GET http://localhost:5240/todos
+GET http://localhost:5240/todos/api/v1
 Authorization: Bearer <your_token>
 
 ### 
-GET http://localhost:5240/todos/2
+GET http://localhost:5240/todos/api/v1/2
 Authorization: Bearer <your_token>
 
 ###
-POST http://localhost:5240/todos
+POST http://localhost:5240/todos/api/v1
 Content-Type: application/json
 Authorization: Bearer <your_token>
 
@@ -16,7 +16,7 @@ Authorization: Bearer <your_token>
 }
 
 ###
-PUT http://localhost:5240/todos/4
+PUT http://localhost:5240/todos/api/v1/4
 Content-Type: application/json
 Authorization: Bearer <your_token>
 
@@ -26,7 +26,7 @@ Authorization: Bearer <your_token>
 }
 
 ###
-DELETE http://localhost:5240/todos/3
+DELETE http://localhost:5240/todos/api/v1/5
 Authorization: Bearer <your_token>
 
 
