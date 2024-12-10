@@ -1,20 +1,24 @@
 GET http://localhost:5240/todos
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMiLCJlbWFpbCI6IndpbGxAb3V0bG9vay5jb20iLCJqdGkiOiI1NGRhMjBjMC02NzRlLTQ2ZTgtYmIxNS03NDI1YWZmZDE4YWUiLCJleHAiOjE3Mzc0MzY4MzYsImlzcyI6InlvdXItYXBwIiwiYXVkIjoieW91ci1hcHAifQ.aDSPi7dJcPmlJU5d84z0wJ81oXXaaiYFesCFj33MTHk
 
 ### 
-GET http://localhost:5240/todos/4
+GET http://localhost:5240/todos/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMiLCJlbWFpbCI6IndpbGxAb3V0bG9vay5jb20iLCJqdGkiOiI1NGRhMjBjMC02NzRlLTQ2ZTgtYmIxNS03NDI1YWZmZDE4YWUiLCJleHAiOjE3Mzc0MzY4MzYsImlzcyI6InlvdXItYXBwIiwiYXVkIjoieW91ci1hcHAifQ.aDSPi7dJcPmlJU5d84z0wJ81oXXaaiYFesCFj33MTHk
 
 ###
 POST http://localhost:5240/todos
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMiLCJlbWFpbCI6IndpbGxAb3V0bG9vay5jb20iLCJqdGkiOiI1NGRhMjBjMC02NzRlLTQ2ZTgtYmIxNS03NDI1YWZmZDE4YWUiLCJleHAiOjE3Mzc0MzY4MzYsImlzcyI6InlvdXItYXBwIiwiYXVkIjoieW91ci1hcHAifQ.aDSPi7dJcPmlJU5d84z0wJ81oXXaaiYFesCFj33MTHk
 
 {
-    "title": "Task-2 Add salt",
-    "text": "Food needs salt"
+    "title": "Task-3 Update playlist",
+    "text": "Gym playlist is a bit old, needs updating"
 }
 
 ###
 PUT http://localhost:5240/todos/4
 Content-Type: application/json
+Authorization: Bearer <your_token>
 
 {
   "title": "Task 4 updated",
@@ -23,6 +27,7 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost:5240/todos/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjMiLCJlbWFpbCI6IndpbGxAb3V0bG9vay5jb20iLCJqdGkiOiI1NGRhMjBjMC02NzRlLTQ2ZTgtYmIxNS03NDI1YWZmZDE4YWUiLCJleHAiOjE3Mzc0MzY4MzYsImlzcyI6InlvdXItYXBwIiwiYXVkIjoieW91ci1hcHAifQ.aDSPi7dJcPmlJU5d84z0wJ81oXXaaiYFesCFj33MTHk
 
 
 

@@ -6,11 +6,13 @@ using ToDo_list_API.Data;
 using ToDo_list_API.Middlewares;
 
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Retrieve the JWT settings from appsettings.json
 var jwtSettings = builder.Configuration.GetSection("JwtSettings");
 var secretKey = jwtSettings["SecretKey"];  // Get the secret key
+
 
 
 
@@ -42,7 +44,6 @@ var app = builder.Build();
 
 // Migrate database at startup
 await app.MigrateDbAsync();
-// app.UseMiddleware<AuthMiddleware>();  // Add this line
 
 // Map API endpoints
 app.MapUserEndpoints(builder.Configuration);
@@ -55,4 +56,8 @@ app.UseAuthorization();
 app.MapTodosEndpoints();
 
 app.Run();
+
+
+public partial class Program { }
+
 
